@@ -1,0 +1,32 @@
+﻿@using TagHelperDemo.Models
+@model Person
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <form asp-controller="Home" asp-action="Index" method="post">
+        Name:  <input asp-for="Name" /><span asp-validation-for="Name"></span><br />
+        Address: <input asp-for="Address" /><span asp-validation-for="Address"></span><br />
+        Age: <input asp-for="Age" /><span asp-validation-for="Age"></span><br />
+        <button type="submit">Submit</button>
+    </form>
+    @{
+        if (Model != null)
+        {
+            @:<hr />
+            @:<label asp-for="Name" />@Model.Name<br />
+            @:<label asp-for="Address" />@Model.Address<br />
+            @:<label asp-for="Age" />@Model.Age<br />
+        }
+    }
+</body>
+</html>
